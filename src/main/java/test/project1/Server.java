@@ -15,7 +15,7 @@ public class Server extends AbstractVerticle {
 			HttpServerResponse response = routingContext
 				.response();
 			response.putHeader("content-type", "text/html")
-				.end("<h1>Hello universe</h1>");
+				.end("<h1>Hello world</h1>");
 		});
 
 		vertx.createHttpServer().requestHandler(router::accept)
