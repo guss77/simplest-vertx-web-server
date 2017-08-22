@@ -4,7 +4,6 @@
 	<groupId>test</groupId>
 	<artifactId>project1</artifactId>
 	<version>0.0.2-SNAPSHOT</version>
-
 	<dependencies>
 		<dependency>
 			<groupId>io.vertx</groupId>
