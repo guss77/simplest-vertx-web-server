@@ -13,5 +13,5 @@ mvn org.codehaus.mojo:exec-maven-plugin:exec -Dexec.executable=java \
 To test:
 
 ```
-curl -D- http://localhost:8080/
+curl http://localhost:8080/
 ```
