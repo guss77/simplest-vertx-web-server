@@ -9,7 +9,7 @@ public class Server extends AbstractVerticle {
 	private Router router;
 
 	@Override
-	public void start(Future<Void> fut) throws Exception {
+	public void start(Promise<Void> fut) throws Exception {
 		router = Router.router(vertx);
 		router.route("/").handler(routingContext -> {
 			HttpServerResponse response = routingContext
@@ -18,16 +18,9 @@ public class Server extends AbstractVerticle {
 				.end("<h1>Hello world</h1>");
 		});
 
-		vertx.createHttpServer().requestHandler(router::accept)
+		vertx.createHttpServer().requestHandler(router)
 			.listen(
-				config().getInteger("http.port", 8080),
-				result -> {
-					if (result.succeeded()) {
-						fut.complete();
-					} else {
-						fut.fail(result.cause());
-					}
-				});
+				config().getInteger("http.port", 8080), result -> fut.handle(result.mapEmpty()));
 	}
 
 }
